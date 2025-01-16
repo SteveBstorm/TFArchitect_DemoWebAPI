@@ -36,10 +36,11 @@ namespace BLL_CorrectifLabo.Services
             return _coffretRepository.GetById(id).ToBLL();
         }
 
-        public void Command(int coffretId, int userId, int newqty)
+        public void Command(int coffretId, int userId)
         {
             _coffretUserRepository.CreateCommande(coffretId, userId);
-            _coffretRepository.ModifyQuantity(coffretId, newqty);
+            int currentqty = _coffretRepository.GetById(coffretId).ToBLL().Quantite;
+            _coffretRepository.ModifyQuantity(coffretId, currentqty -1);
         }
 
         public void ModifyQuantity(int coffretId, int  quantity)

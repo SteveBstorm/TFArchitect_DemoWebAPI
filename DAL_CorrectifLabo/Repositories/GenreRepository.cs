@@ -62,9 +62,9 @@ namespace DAL_CorrectifLabo.Repositories
             return list;
         }
 
-        public Genre GetById(int id)
+        public Genre? GetById(int id)
         {
-            Genre g = new Genre();
+            Genre g = null;
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 using (SqlCommand cmd = connection.CreateCommand())

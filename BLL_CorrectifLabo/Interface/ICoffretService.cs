@@ -13,6 +13,6 @@ namespace BLL_CorrectifLabo.Interface
         IEnumerable<Coffret> GetAll();
         void Create(Coffret coffret);
         void ModifyQuantity(int coffretId, int quantity);
-        void Command(int coffretId, int userId, int newqty);
+        void Command(int coffretId, int userId);
     }
 }

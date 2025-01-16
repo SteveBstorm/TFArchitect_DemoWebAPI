@@ -46,6 +46,8 @@ namespace BLL_CorrectifLabo.Tools
 
         public static BLL.Genre ToBLL(this DAL.Genre genre )
         {
+            if (genre is null)
+                throw new ArgumentNullException();
             return new BLL.Genre { Id = genre.Id, Label = genre.Label };
         }
         public static DAL.Genre ToDAL(this BLL.Genre genre)

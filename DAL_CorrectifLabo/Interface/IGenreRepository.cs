@@ -10,7 +10,7 @@ namespace DAL_CorrectifLabo.Interface
     public interface IGenreRepository
     {
         void Create(string label);
-        Genre GetById(int id);
+        Genre? GetById(int id);
         IEnumerable<Genre> GetAll();
     }
 }
