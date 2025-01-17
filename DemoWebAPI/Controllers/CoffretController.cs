@@ -1,6 +1,7 @@
 ﻿using BLL_CorrectifLabo.Interface;
 using DemoWebAPI.DTOs;
 using DemoWebAPI.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace DemoWebAPI.Controllers
     [ApiController]
     public class CoffretController(ICoffretService _coffretService, IHistoryService _historyService) : ControllerBase
     {
+        [Authorize("adminPolicy")]
         [HttpPost("create")]
         public IActionResult Create(CoffretForm form)
         {
@@ -36,7 +38,7 @@ namespace DemoWebAPI.Controllers
             return Ok(_coffretService.GetById(id));
         }
 
-
+        [Authorize("adminPolicy")]
         [HttpPatch("modifQuantity")]
         public IActionResult ModifyQty(ModifyQtyForm form)
         {
@@ -52,7 +54,7 @@ namespace DemoWebAPI.Controllers
                 
             }
         }
-
+        [Authorize("authPolicy")]
         [HttpPost("command")]
         public IActionResult CreateCommand(CommandForm form)
         {
